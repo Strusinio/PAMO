@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BMI Calculator</string>
+    <string-array name="sex">
+        <item>Kobieta</item>
+        <item>Mężczyzna</item>
+    </string-array>
 </resources>

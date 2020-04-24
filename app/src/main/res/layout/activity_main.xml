@@ -49,5 +49,13 @@
         android:layout_marginTop="50dp"
         android:text="SHOW RECIPE"
         app:layout_constraintTop_toBottomOf="@+id/button_ppm"/>
+    <Button
+        android:id="@+id/button_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:text="Quiz"
+        app:layout_constraintTop_toBottomOf="@+id/button_quiz"/>
 
 </LinearLayout>

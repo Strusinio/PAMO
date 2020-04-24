@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bmiButton;
     private Button ppmButton;
     private Button recipeButton;
+    private  Button quizButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         bmiButton = findViewById(R.id.button_bmi);
         ppmButton = findViewById(R.id.button_ppm);
         recipeButton = findViewById(R.id.button_recipe);
+        quizButton =findViewById(R.id.button_quiz);
 
         bmiButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 openActivityRecipes();
             }
         });
+        quizButton.setOnClickListener(v -> openActivityQuiz());
+
+
     }
 
     public void openActivityBMI(){
@@ -54,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivityRecipes(){
         Intent intent = new Intent(this, Recipe.class);
+        startActivity(intent);
+    }
+    public void openActivityQuiz(){
+        Intent intent = new Intent(this, Quiz.class);
         startActivity(intent);
     }
 

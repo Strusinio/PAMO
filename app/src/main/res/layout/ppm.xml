@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     android:orientation="vertical"
     tools:context=".PPM">
 
@@ -12,13 +14,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="PPM"/>
+        android:text="PPM" />
+
+    <Spinner
+        android:id="@+id/sex"
+        android:layout_marginTop="16dp"
+        android:entries="@array/sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="test" />
+
+    <EditText
+        android:id="@+id/weight"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masa ciała [kg]" />
+
+    <EditText
+        android:id="@+id/height"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Wzrost [cm]" />
+
+    <EditText
+        android:id="@+id/age"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Wiek [lat]" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/calculate"
+        android:text="Oblicz"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
     <Button
         android:id="@+id/ppm_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
         android:layout_gravity="center_horizontal"
-        android:text="Back To Main"/>
+        android:layout_marginTop="500dp"
+        android:text="Back To Main" />
 </LinearLayout>
