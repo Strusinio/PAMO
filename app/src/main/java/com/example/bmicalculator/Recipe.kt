@@ -6,17 +6,16 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.recipe.*
 import java.util.*
 
 class Recipe : AppCompatActivity() {
-    private var backToMain: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recipe)
         val result = intent.getSerializableExtra("arg_bmi") as EBMIResult
-        // BTN initialize
-        backToMain = findViewById(R.id.recipe_back)
-        backToMain.setOnClickListener(View.OnClickListener { v: View? -> finish() })
+        recipe_back.setOnClickListener { finish() }
         initRecipes(result)
     }
 
@@ -26,26 +25,11 @@ class Recipe : AppCompatActivity() {
         rv.adapter = RecipeAdapter(createRecipes(result))
     }
 
-    private fun createRecipes(state: EBMIResult): List<RecipeItem?> {
-        val result: MutableList<RecipeItem?> = ArrayList()
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
-        result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content"))
+    private fun createRecipes(state: EBMIResult): List<RecipeItem> {
+        val result: MutableList<RecipeItem> = ArrayList()
+        for (it in 1..1) {
+            result.add(RecipeItem(R.drawable.ic_launcher_background, state.name, "test content $it"))
+        }
         return result
     }
 }

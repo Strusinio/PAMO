@@ -7,29 +7,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.bmi.*
 
 class BMI : AppCompatActivity() {
-    private var weight: EditText? = null
-    private var height: EditText? = null
-    private var result: TextView? = null
-    private var calculation: Button? = null
     private var BMIresult: String? = null
     private var error: Exception? = null
-    private var backToMain: Button? = null
-    private var showRecipesBtn: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bmi)
-        // BTN
-        backToMain = findViewById(R.id.bmi_back)
-        weight = findViewById(R.id.weight)
-        height = findViewById(R.id.height)
-        result = findViewById(R.id.result)
-        calculation = findViewById(R.id.calculate_btn)
-        backToMain.setOnClickListener(View.OnClickListener { v: View? -> finish() })
-        calculation.setOnClickListener(View.OnClickListener { view: View? -> calculateBmi() })
-        showRecipesBtn = findViewById(R.id.showRecipes)
-        showRecipesBtn.setVisibility(View.GONE)
+        bmi_back.setOnClickListener { finish() }
+        calculate_btn.setOnClickListener { calculateBmi() }
+        showRecipes.visibility = View.GONE
     }
 
     private fun openRecipes(bmi: Double) {
@@ -38,7 +26,7 @@ class BMI : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun calculateBmi() {
+    private fun calculateBmi() {
         val inputWeightTxt = weight!!.text.toString()
         val inputHeightTxt = height!!.text.toString()
         val weight = inputWeightTxt.toDouble()
@@ -46,8 +34,8 @@ class BMI : AppCompatActivity() {
         try {
             val bmi = weight / Math.pow(height / 100, 2.0)
             displayBmi(bmi)
-            showRecipesBtn!!.visibility = View.VISIBLE
-            showRecipesBtn!!.setOnClickListener { v: View? -> openRecipes(bmi) }
+            showRecipes.visibility = View.VISIBLE
+            showRecipes.setOnClickListener { v: View? -> openRecipes(bmi) }
         } catch (ex: ArithmeticException) {
             error = ex
         }

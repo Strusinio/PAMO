@@ -7,25 +7,22 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.ppm.*
 import java.util.*
 
 class PPM : AppCompatActivity() {
-    private var backToMain: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ppm)
-        findViewById<View>(R.id.calculate).setOnClickListener { view: View -> calculatePressed(view) }
-        // BTN initialize
-        backToMain = findViewById(R.id.ppm_back)
-        backToMain.setOnClickListener(View.OnClickListener { v: View? -> finish() })
+        calculate.setOnClickListener { view: View -> calculatePressed(view) }
+        ppm_back.setOnClickListener { finish() }
     }
 
     private fun calculatePressed(view: View) {
-        val spinner = findViewById<Spinner>(R.id.sex)
         val weight = getValueFromView(R.id.weight)
         val height = getValueFromView(R.id.height)
         val age = getValueFromView(R.id.age)
-        val pos = spinner.selectedItemPosition
+        val pos = sex.selectedItemPosition
         if (weight != 0 && height != 0 && age != 0) {
             val result = calculateMifflinFactor(weight, height, age, pos == 0)
             (findViewById<View>(R.id.result) as TextView).text = String.format(Locale.ROOT, "Wynik: %.2f kcal", result)

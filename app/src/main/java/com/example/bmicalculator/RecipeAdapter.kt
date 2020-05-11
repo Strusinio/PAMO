@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_receipe.view.*
 import java.util.*
 
-class RecipeAdapter internal constructor(items: List<RecipeItem?>?) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
-    private val items: List<RecipeItem?> = ArrayList<Any?>()
+class RecipeAdapter internal constructor(items: List<RecipeItem>) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+    private val items: MutableList<RecipeItem> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_receipe, parent, false))
     }
@@ -23,19 +24,11 @@ class RecipeAdapter internal constructor(items: List<RecipeItem?>?) : RecyclerVi
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val img: ImageView
-        private val title: TextView
-        private val content: TextView
-        fun bind(recipeItem: RecipeItem?) {
-            img.setImageResource(recipeItem.getImageId())
-            title.text = recipeItem.getTitle()
-            content.text = recipeItem.getContent()
-        }
 
-        init {
-            img = itemView.findViewById(R.id.itemRecipeImg)
-            title = itemView.findViewById(R.id.itemRecipeTitleTxt)
-            content = itemView.findViewById(R.id.itemRecipeContentTxt)
+        fun bind(recipeItem: RecipeItem) {
+            itemView.itemRecipeImg.setImageResource(recipeItem.imageId)
+            itemView.itemRecipeTitleTxt.text = recipeItem.title
+            itemView.itemRecipeContentTxt.text = recipeItem.content
         }
     }
 
